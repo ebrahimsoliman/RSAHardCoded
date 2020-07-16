@@ -1,0 +1,89 @@
+<div class="row no-gutters">
+  <div class="col-12">
+    <form>
+      <div class="form-row no-gutters align-items-center">
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">P</div>
+            </div>
+            <input
+              [(ngModel)]="p"
+              (change)="getn()"
+              type="number"
+              class="form-control"
+              name="p"
+              placeholder="7"
+              id="inlineFormInputGroup"
+            />
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Q</div>
+            </div>
+            <input
+              (change)="getn()"
+              type="number"
+              [(ngModel)]="q"
+              class="form-control"
+              name="q"
+              placeholder="13"
+              id="inlineFormInputGroup"
+            />
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">E</div>
+            </div>
+            <input
+              [(ngModel)]="e"
+              (change)="getc(); decrypt()"
+              name="e"
+              placeholder="17"
+              type="number"
+              class="form-control"
+              id="inlineFormInputGroup"
+            />
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">M</div>
+            </div>
+            <input
+              [(ngModel)]="m"
+              type="number"
+              placeholder="2"
+              name="m"
+              class="form-control"
+              (change)="getc(); getd(); decrypt()"
+              id="inlineFormInputGroup"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row no-gutters">
+  <div class="mx-5 col-auto">
+    <p *ngIf="n != null">N = {{ n }}</p>
+  </div>
+  <div class="col-auto mx-5">
+    <p *ngIf="phin != null">&Phi;N = {{ phin }}</p>
+  </div>
+  <div class="col-auto mx-5">
+    <p *ngIf="c != null">C = {{ c }}</p>
+  </div>
+  <div class="col-auto mx-5">
+    <p *ngIf="d != null">d = {{ d }}</p>
+  </div>
+  <div class="col-auto mx-5">
+    <p *ngIf="decrypted != null">M = {{ decrypted }}</p>
+  </div>
+</div>
