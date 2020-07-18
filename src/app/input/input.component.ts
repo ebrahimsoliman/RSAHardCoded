@@ -27,6 +27,7 @@ export class InputComponent implements OnInit {
     this.getd();
     this.decrypt();
   }
+  // validate p(isprime) and handle it
   // tslint:disable-next-line: typedef
   setp() {
     this.p.toString();
@@ -37,6 +38,7 @@ export class InputComponent implements OnInit {
       return 'red';
     }
   }
+  // validate q(isprime) and handle it
   // tslint:disable-next-line: typedef
   setq() {
     this.q.toString();
@@ -47,6 +49,7 @@ export class InputComponent implements OnInit {
       return 'red';
     }
   }
+  // validate e(phin gcd and less than phi n) and handle it
   // tslint:disable-next-line: typedef
   sete() {
     this.e.toString();
@@ -58,32 +61,36 @@ export class InputComponent implements OnInit {
       return 'red';
     }
   }
+  // handle m
   // tslint:disable-next-line: typedef
   setm() {
     this.m.toString();
     this.m = bigInt(this.m);
   }
+   // calculate n
   // tslint:disable-next-line: typedef
   getn() {
     // tslint:disable-next-line: radix
     this.n = bigInt(this.p.multiply(this.q));
     this.phin = bigInt(this.p.subtract(1).multiply(this.q.subtract(1)));
   }
+  // calculate c
   // tslint:disable-next-line: typedef
   getc() {
     this.c = this.m.pow(this.e).remainder(this.n);
   }
+  // calculate d
   // tslint:disable-next-line: typedef
   getd() {
 
     for (let x = 0; this.phin.gt(x.toString()); x++) {
-      console.log(x.toString());
       if (this.e.multiply(x.toString()).remainder(this.phin).compare(bigInt('1')) == 0) {
         this.d = bigInt(x.toString());
         break;
       }
     }
   }
+  // verify
   // tslint:disable-next-line: typedef
   decrypt() {
     setTimeout(() => {
