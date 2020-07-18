@@ -1,89 +1,115 @@
 <div class="row no-gutters">
   <div class="col-12">
-    <form>
-      <div class="form-row no-gutters align-items-center">
+    <form class="text-center">
+      <div class="form-row no-gutters align-self-baseline">
         <div class="col-auto">
-          <div class="input-group mb-2">
+          <div class="input-group mb-2 align-top">
             <div class="input-group-prepend">
-              <div class="input-group-text">P</div>
+              <div class="input-group-text">p</div>
             </div>
             <input
               [(ngModel)]="p"
-              (change)="getn()"
-              type="number"
+              [ngStyle]="{'borderColor': setp()}"
+              (change)="setp();"
+              type="text"
               class="form-control"
               name="p"
-              placeholder="7"
+
               id="inlineFormInputGroup"
             />
           </div>
+          <div *ngIf="setp() == 'red'" class="alert alert-danger" role="alert">
+          please enter a prime number
+          </div>
         </div>
         <div class="col-auto">
-          <div class="input-group mb-2">
+          <div class="input-group mb-2 align-self-baseline">
             <div class="input-group-prepend">
-              <div class="input-group-text">Q</div>
+              <div class="input-group-text">q</div>
             </div>
             <input
-              (change)="getn()"
-              type="number"
+              (change)="setq(); "
+              type="text"
               [(ngModel)]="q"
+              [ngStyle]="{'borderColor': setq()}"
               class="form-control"
               name="q"
-              placeholder="13"
+
               id="inlineFormInputGroup"
             />
+
           </div>
+          <div *ngIf="setq() == 'red'" class="alert alert-danger" role="alert">
+            please enter a prime number
+            </div>
         </div>
         <div class="col-auto">
-          <div class="input-group mb-2">
+          <div class="input-group mb-2 align-self-baseline">
             <div class="input-group-prepend">
-              <div class="input-group-text">E</div>
+              <div class="input-group-text">e</div>
             </div>
             <input
               [(ngModel)]="e"
-              (change)="getc(); decrypt()"
+              (change)=" sete();"
               name="e"
-              placeholder="17"
-              type="number"
+              [ngStyle]="{'borderColor': sete()}"
+
+              type="text"
               class="form-control"
               id="inlineFormInputGroup"
             />
           </div>
+          <div *ngIf="sete() == 'red'" class="alert alert-danger" role="alert">
+            please enter GCD & < to &Phi; n
+            </div>
         </div>
         <div class="col-auto">
-          <div class="input-group mb-2">
+          <div class="input-group mb-2 align-self-baseline">
             <div class="input-group-prepend">
-              <div class="input-group-text">M</div>
+              <div class="input-group-text">m</div>
             </div>
             <input
               [(ngModel)]="m"
-              type="number"
-              placeholder="2"
+              type="text"
+
               name="m"
               class="form-control"
-              (change)="getc(); getd(); decrypt()"
+              (change)="setm(); "
               id="inlineFormInputGroup"
             />
           </div>
         </div>
       </div>
+      <button type="button" class="btn btn-primary" (click) = "getn()">calculate n and &Phi;n</button>
+
+      <button type="button" class="btn btn-primary" (click) = "calc()">calculate</button>
+
     </form>
   </div>
 </div>
 <div class="row no-gutters">
-  <div class="mx-5 col-auto">
-    <p *ngIf="n != null">N = {{ n }}</p>
-  </div>
-  <div class="col-auto mx-5">
-    <p *ngIf="phin != null">&Phi;N = {{ phin }}</p>
-  </div>
-  <div class="col-auto mx-5">
-    <p *ngIf="c != null">C = {{ c }}</p>
-  </div>
-  <div class="col-auto mx-5">
-    <p *ngIf="d != null">d = {{ d }}</p>
-  </div>
-  <div class="col-auto mx-5">
-    <p *ngIf="decrypted != null">M = {{ decrypted }}</p>
+  <div class="mx-5 col-11">
+    <p *ngIf="n != null">n = p*q = {{p.toString()}} * {{q.toString()}} = {{ n.toString() }}</p>
   </div>
 </div>
+<div class="row no-gutters">
+  <div class="col-11 mx-5">
+    <p *ngIf="phin != null">&Phi;n = (p - 1) * (q - 1) = ({{p.toString()}} - 1) * ({{q.toString()}} - 1) = {{ phin.toString() }}</p>
+  </div></div>
+  <div class="row no-gutters">
+  <div class="col-11 mx-5">
+    <p *ngIf="c != null">c = m<sup>e</sup> % n = {{m.toString()}}<sup>{{e.toString()}}</sup> % {{n.toString()}} = {{ c.toString() }}</p>
+  </div>
+  </div>
+  <div class="row no-gutters">
+
+  <div class="col-11 mx-5">
+    <p *ngIf="d != null">d = {{  d.toString() }}</p>
+  </div>
+  </div>
+  <div class="row no-gutters">
+
+  <div class="col-11 mx-5">
+    <p *ngIf="decrypted != null">m = c<sup>d</sup> % n  = {{c.toString()}}<sup>{{d.toString()}}</sup> %{{n.toString()}} = {{ decrypted.toString() }}</p>
+  </div>
+  </div>
